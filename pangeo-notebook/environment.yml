@@ -52,7 +52,10 @@ dependencies:
  - scikit-learn
  - scipy
  - sparse
+ - tables
  - tiledb-py
+ - utide
+ - wavespectra
  - xarray
  - xcape
  - xesmf
@@ -63,3 +66,4 @@ dependencies:
  - xpublish
  - xrft
  - zarr
+
