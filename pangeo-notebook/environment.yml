@@ -51,10 +51,13 @@ dependencies:
  - scikit-image
  - scikit-learn
  - scipy
+ - seaborn
  - sparse
+ - sympy
  - pytables
  - tiledb-py
  - utide
+ - umap-learn
  - xarray
  - xcape
  - xesmf
