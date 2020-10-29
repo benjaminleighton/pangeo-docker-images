@@ -4,7 +4,7 @@ FROM ubuntu:18.04
 # Run this section as root
 # try to keep conda version in sync with repo2docker
 # ========================
-ENV CONDA_VERSION=4.8.2-1 \
+ENV CONDA_VERSION=4.8.5-1 \
     CONDA_ENV=notebook \
     NB_USER=jovyan \
     NB_UID=1000 \
@@ -38,7 +38,7 @@ ARG DEBIAN_FRONTEND=noninteractive
 RUN echo "Installing Apt-get packages..." \
     && apt-get update --fix-missing \
     && apt-get install -y apt-utils 2> /dev/null \
-    && apt-get install -y wget \
+    && apt-get install -y wget zip \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 # ========================
@@ -51,7 +51,8 @@ RUN echo "Installing Miniforge..." \
     && wget --quiet ${URL} -O miniconda.sh \
     && /bin/bash miniconda.sh -u -b -p ${CONDA_DIR} \
     && rm miniconda.sh \
-    && conda clean -afy \
+    && conda install -y -c conda-forge mamba \
+    && mamba clean -afy \
     && find ${CONDA_DIR} -follow -type f -name '*.a' -delete \
     && find ${CONDA_DIR} -follow -type f -name '*.pyc' -delete
 
@@ -96,13 +97,13 @@ ONBUILD RUN echo "Checking for 'conda-linux-64.lock' or 'environment.yml'..." \
         ; [ -d binder ] && cd binder \
         ; [ -d .binder ] && cd .binder \
         ; if test -f "conda-linux-64.lock" ; then \
-        conda create --name ${CONDA_ENV} --file conda-linux-64.lock \
+        mamba create --name ${CONDA_ENV} --file conda-linux-64.lock \
         ; elif test -f "environment.yml" ; then \
-        conda env create --name ${CONDA_ENV} -f environment.yml  \
+        mamba env create --name ${CONDA_ENV} -f environment.yml  \
         ; else echo "No conda-linux-64.lock or environment.yml! *creating default env*" ; \
-        conda create --name ${CONDA_ENV} pangeo-notebook \
+        mamba create --name ${CONDA_ENV} pangeo-notebook \
         ; fi \
-        && conda clean -yaf \
+        && mamba clean -yaf \
         && find ${CONDA_DIR} -follow -type f -name '*.a' -delete \
         && find ${CONDA_DIR} -follow -type f -name '*.pyc' -delete \
         && find ${CONDA_DIR} -follow -type f -name '*.js.map' -delete \

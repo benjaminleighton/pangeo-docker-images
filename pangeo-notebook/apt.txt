@@ -2,3 +2,4 @@ git
 vim
 graphviz
 gfortran
+tree

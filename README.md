@@ -8,25 +8,24 @@ Latest DockerHub Images: https://hub.docker.com/orgs/pangeo/repositories
 | Image           | Description                                   |  Size | Pulls |
 |-----------------|-----------------------------------------------|--------------|-------------|
 | base-image      | Foundational Dockerfile for builds            | ![](https://img.shields.io/docker/image-size/pangeo/base-image?sort=date) | ![](https://img.shields.io/docker/pulls/pangeo/base-image?sort=date)
-| base-notebook   | minimally functional image for pangeo hubs    | ![](https://img.shields.io/docker/image-size/pangeo/base-notebook?sort=date) | ![](https://img.shields.io/docker/pulls/pangeo/base-notebook?sort=date)
-| pangeo-notebook | above + core earth science analysis packages  | ![](https://img.shields.io/docker/image-size/pangeo/pangeo-notebook?sort=date) | ![](https://img.shields.io/docker/pulls/pangeo/pangeo-notebook?sort=date)
-| ml-notebook     | above + GPU-enabled tensorflow2               | ![](https://img.shields.io/docker/image-size/pangeo/ml-notebook?sort=date) | ![](https://img.shields.io/docker/pulls/pangeo/ml-notebook?sort=date)
+| [base-notebook](base-notebook/packages.txt) | minimally functional image for pangeo hubs | ![](https://img.shields.io/docker/image-size/pangeo/base-notebook?sort=date) | ![](https://img.shields.io/docker/pulls/pangeo/base-notebook?sort=date)
+| [pangeo-notebook](pangeo-notebook/packages.txt) | above + core earth science analysis packages | ![](https://img.shields.io/docker/image-size/pangeo/pangeo-notebook?sort=date) | ![](https://img.shields.io/docker/pulls/pangeo/pangeo-notebook?sort=date)
+| [ml-notebook](ml-notebook/packages.txt) | above + GPU-enabled tensorflow2 | ![](https://img.shields.io/docker/image-size/pangeo/ml-notebook?sort=date) | ![](https://img.shields.io/docker/pulls/pangeo/ml-notebook?sort=date)
 
+*Click on the image name in the table above for a current list of installed packages and versions*
 
 ### Image tagging and "continuous building"
-This repository uses [GitHub Actions](https://help.github.com/en/actions) to build images, run tests, and push images to [DockerHub](https://hub.docker.com/orgs/pangeo). 
+This repository uses [GitHub Actions](https://help.github.com/en/actions) to build images, run tests, and push images to [DockerHub](https://hub.docker.com/orgs/pangeo).
 
-* Pull requests from forks trigger rebuilding all images but can't push to DockerHub because they don't have access to repo secrets for authentication.
+* Pull requests from forks trigger rebuilding all images
 
 * `pangeo/base-notebook:master` corresponds to current "staging" image in sync with master branch. Built with every commit to master. Also tagged with short GitHub short SHA `pangeo/base-notebook:2639bd3`.
 
-* Tags pushed to GitHub represent "production" releases with corresponding tags on dockerhub `pangeo/pangeo-notebook:2020.03.11`. The `latest` tag also corresponds to the most recent GitHub tag.
+* Tags pushed to GitHub manually represent "production" releases with corresponding tags on DockerHub `pangeo/pangeo-notebook:2020.03.11`. The `latest` tag also corresponds to the most recent GitHub tag.
 
 
-### How to build images through CI 
-A common need is to update conda package versions in these images. To do so simply, 1) Fork this repo, 2) edit `pangeo-notebook/environment.yml` on your fork, 3) create a PR and on the first line of your PR comment write `/condalock` (you can write more details about your PR on subsequent lines). 
-
-Repository admins can trigger rebuilding all images simply by adding a comment in an open issue with `/rebuild` on the first line. This is useful if you don't need to change any configuration files, but want to rebuild images with the latest package versions available on conda-forge.
+### How to build images through CI
+A common need is to update conda package versions in these images. To do so simply, 1) Fork this repo, 2) edit `pangeo-notebook/environment.yml` on your fork, 3) create a PR. Compatible packages versions with `conda-lock` and a lock file is automatically committed added as a commit in your PR.
 
 
 ### How to build images locally
@@ -74,8 +73,15 @@ You can pre-solve for compatible environments locally with [conda-lock](https://
 
 The runtime environment sets two variables by default
 
-1. `$PANGEO_ENV`: name of the conda environemnt.
+1. `$PANGEO_ENV`: name of the conda environment.
 2. `$PANGEO_SCRATCH`: a URL like `gcs://pangeo-scratch/username/` that
    points to a cloud storage bucket for temporary storage. This is set
-   if the variable `$PANGEO_SCRATCH_PREFIX` and `JUPYTERHUB_USERNAME`
+   if the variable `$PANGEO_SCRATCH_PREFIX` and `JUPYTERHUB_USER`
    are detected. The prefix should be like `s3://pangeo-scratch`
+
+
+### Other notes
+
+* Since 2020.10.16, [mamba](https://github.com/mamba-org/mamba) is installed into the base-image and conda-lock environment and is used by default to solve for a compatible environment (see #146)
+* For a simple list of packages for a given image, you can use a link like this: https://github.com/pangeo-data/pangeo-docker-images/blob/2020.10.08/pangeo-notebook/packages.txt
+* To compare changes between two images, you can use a link like this: https://github.com/pangeo-data/pangeo-docker-images/compare/2020.10.03..2020.10.08

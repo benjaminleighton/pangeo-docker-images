@@ -2,20 +2,27 @@ name: pangeo
 channels:
  - conda-forge
 dependencies:
- - python=3.7*
- - pangeo-notebook=2020.06.19
+ - python=3.8*
+ - pangeo-notebook=2020.10.08
  - pip=20
+ - awscli
  - bottleneck
+ - boto3
  - cartopy
+ - cfgrib
  - ciso
  - dask-ml
  - datashader
  - descartes
+ - eofs
+ - erddapy
+ - esmpy
  - fastjmd95
  - fsspec
  - gcsfs
  - geopandas
  - geoviews-core
+ - gsw
  - h5netcdf
  - h5py
  - holoviews
@@ -31,6 +38,8 @@ dependencies:
  - lz4
  - matplotlib-base
  - metpy
+ - nb_conda_kernels
+ - nbstripout
  - nc-time-axis
  - netcdf4
  - nomkl
@@ -40,10 +49,15 @@ dependencies:
  - panel
  - prefect
  - pyarrow
+ - pycamhd
  - pydap
+ - pystac
  - python-blosc
+ - python-gist
+ - python-graphviz
  - rasterio
  - rio-cogeo
+ - rioxarray
  - s3fs
  - sat-search
  - sat-stac
@@ -59,7 +73,9 @@ dependencies:
  - utide
  - umap-learn
  - xarray
+ - xarray-spatial
  - xcape
+ - xcube
  - xesmf
  - xgcm
  - xhistogram
