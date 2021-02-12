@@ -6,6 +6,7 @@ dependencies:
  - pangeo-notebook=2020.10.08
  - pip=20
  - awscli
+ - astropy
  - bottleneck
  - boto3
  - cartopy
@@ -14,6 +15,7 @@ dependencies:
  - dask-ml
  - datashader
  - descartes
+ - earthengine-api
  - eofs
  - erddapy
  - esmpy
@@ -31,7 +33,7 @@ dependencies:
  - intake-esm
  - intake-geopandas
  - intake-stac
- - intake-xarray
+ - intake-xarray=3.1.0
  - ipyleaflet
  - ipywidgets
  - jupyter-panel-proxy
@@ -47,6 +49,7 @@ dependencies:
  - numpy
  - pandas
  - panel
+ - pillow
  - prefect
  - pyarrow
  - pycamhd
@@ -55,6 +58,7 @@ dependencies:
  - python-blosc
  - python-gist
  - python-graphviz
+ - pytz
  - rasterio
  - rio-cogeo
  - rioxarray
@@ -66,6 +70,8 @@ dependencies:
  - scikit-learn
  - scipy
  - seaborn
+ - shapely
+ - skyfield
  - sparse
  - sympy
  - pytables
@@ -84,5 +90,3 @@ dependencies:
  - xpublish
  - xrft
  - zarr
- - pip:
-   - wavespectra
