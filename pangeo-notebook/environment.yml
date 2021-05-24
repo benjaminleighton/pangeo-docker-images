@@ -3,7 +3,7 @@ channels:
  - conda-forge
 dependencies:
  - python=3.8*
- - pangeo-notebook=2021.02.07
+ - pangeo-notebook=2021.05.20
  - pip=20
  - adlfs
  - awscli
@@ -25,6 +25,7 @@ dependencies:
  - fastjmd95
  - fsspec
  - gcsfs
+ - gh
  - geocube
  - geopandas
  - geoviews-core
@@ -41,6 +42,7 @@ dependencies:
  - ipyleaflet
  - ipywidgets
  - jupyter-panel-proxy
+ - jupyter-resource-usage
  - lz4
  - matplotlib-base
  - metpy
