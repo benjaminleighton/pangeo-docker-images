@@ -37,7 +37,7 @@ dependencies:
  - intake-esm
  - intake-geopandas
  - intake-stac
- - intake-xarray=3.1.0
+ - intake-xarray
  - ipyleaflet
  - ipywidgets
  - jupyter-panel-proxy
@@ -59,6 +59,7 @@ dependencies:
  - pyarrow
  - pycamhd
  - pydap
+ - pymc3
  - pystac
  - python-blosc
  - python-gist
