@@ -3,7 +3,7 @@ channels:
  - conda-forge
 dependencies:
  - python=3.8*
- - pangeo-notebook=2021.05.20
+ - pangeo-notebook=2021.09.08
  - pip=20
  - adlfs
  - awscli
@@ -57,6 +57,7 @@ dependencies:
  - panel
  - pillow
  - parcels
+ - param!=1.11.0
  - prefect
  - pyarrow
  - pycamhd
@@ -100,4 +101,5 @@ dependencies:
  - xmitgcm
  - xpublish
  - xrft
+ - xskillscore
  - zarr
