@@ -1,5 +1,5 @@
 # Makefile for convenience
-.PHONY: base-image base-notebook pangeo-notebook ml-notebook
+.PHONY: base-image base-notebook pangeo-notebook pangeo-airflow-code ml-notebook 
 TESTDIR=/srv/test
 
 base-image :
@@ -19,6 +19,13 @@ pangeo-notebook : base-image
 	../list_packages.sh | sort > packages.txt; \
 	docker build -t pangeo/pangeo-notebook:master . ; \
 	docker run -w $(TESTDIR) -v $(PWD):$(TESTDIR) pangeo/pangeo-notebook:master ./run_tests.sh pangeo-notebook
+
+pangeo-airflow-code : base-image
+	cd pangeo-airflow-code ; \
+	../update_lockfile.sh; \
+	../list_packages.sh | sort > packages.txt; \
+	docker build -t pangeo/pangeo-airflow-code:master . ; \
+	docker run -w $(TESTDIR) -v $(PWD):$(TESTDIR) pangeo/pangeo-airflow-code:master ./run_tests.sh pangeo-airflow-code
 
 ml-notebook : base-image
 	cd ml-notebook ; \

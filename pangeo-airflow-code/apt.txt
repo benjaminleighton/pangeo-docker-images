@@ -20,3 +20,4 @@ lsb-release
 sasl2-bin
 sqlite3
 unixodbc
+make

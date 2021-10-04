@@ -1,7 +1,7 @@
 FROM pangeo/base-image:master
 
 USER root
- 
+
 RUN curl -fsSL https://code-server.dev/install.sh | sh -s -- --prefix=/usr/local --method=standalone && \
     rm -rf "${HOME}/.cache"
 
