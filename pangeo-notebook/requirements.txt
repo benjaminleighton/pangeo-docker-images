@@ -2,4 +2,3 @@ rechunker
 wavespectra
 git+https://github.com/pbranson/dembuilder.git
 windrose
-stackstac

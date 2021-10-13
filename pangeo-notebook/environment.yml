@@ -3,7 +3,7 @@ channels:
  - conda-forge
 dependencies:
  - python=3.8*
- - pangeo-notebook=2021.09.08
+ - pangeo-notebook=2021.09.30
  - pip=20
  - adlfs
  - awscli
@@ -11,11 +11,12 @@ dependencies:
  - bottleneck
  - boto3
  - bottleneck
- - cartopy
+ - cartopy >= 0.20.0
  - cfgrib
  - cmip6_preprocessing
  - ciso
  - dask-ml
+ - dask-jobqueue
  - datashader
  - descartes
  - earthengine-api
@@ -24,10 +25,12 @@ dependencies:
  - esmpy
  - fastjmd95
  - fsspec
+ - fsspec-reference-maker
  - gcsfs
  - gh
  - geocube
  - geopandas
+ - geopy
  - geoviews-core
  - gsw
  - h5netcdf
@@ -62,7 +65,9 @@ dependencies:
  - pyarrow
  - pycamhd
  - pydap
+ - pyhdf
  - pymc3
+ - pygeos
  - pystac
  - python-blosc
  - python-gist
@@ -88,6 +93,9 @@ dependencies:
  - tiledb-py
  - utide
  - umap-learn
+ - stackstac
+ - tiledb-py
+ - timezonefinder
  - xarray
  - xarrayutils
  - xarray_leaflet

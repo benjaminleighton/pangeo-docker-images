@@ -21,3 +21,4 @@ sasl2-bin
 sqlite3
 unixodbc
 make
+udunits-bin
