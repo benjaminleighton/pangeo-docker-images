@@ -17,6 +17,7 @@ dependencies:
  - ciso
  - dask-ml
  - dask-jobqueue
+ - dask-image
  - datashader
  - descartes
  - earthengine-api
@@ -56,6 +57,7 @@ dependencies:
  - nomkl
  - numcodecs
  - numpy
+ - opencv
  - pandas
  - panel
  - pillow
@@ -73,6 +75,7 @@ dependencies:
  - python-gist
  - python-graphviz
  - pytz
+ - pytmd
  - rasterio
  - rechunker
  - rio-cogeo

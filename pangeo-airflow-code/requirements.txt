@@ -1,9 +1,6 @@
 apache-airflow[http,sftp,ssh,hashicorp,amazon,singularity]==2.1.3 
-dask==2021.8.1
-distributed==2021.8.1
-rechunker
 git+https://github.com/pbranson/dembuilder.git
 windrose
-stackstac
+pyschism
 git+https://github.com/dirkcgrunwald/jupyter_codeserver_proxy-.git
 git+https://github.com/NickMortimer/pyram
