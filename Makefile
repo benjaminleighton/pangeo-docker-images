@@ -27,6 +27,13 @@ pangeo-airflow-code : base-image
 	docker build -t pangeo/pangeo-airflow-code:master . ; \
 	docker run -w $(TESTDIR) -v $(PWD):$(TESTDIR) pangeo/pangeo-airflow-code:master ./run_tests.sh pangeo-airflow-code
 
+pytorch-airflow-code : base-image
+	cd pytorch-airflow-code ; \
+	../update_lockfile.sh; \
+	../list_packages.sh | sort > packages.txt; \
+	docker build -t pangeo/pytorch-airflow-code:master . ; \
+	docker run -w $(TESTDIR) -v $(PWD):$(TESTDIR) pangeo/pytorch-airflow-code:master ./run_tests.sh pytorch-airflow-code
+
 ml-notebook : base-image
 	cd ml-notebook ; \
 	../update_lockfile.sh condarc.yml; \
