@@ -2,8 +2,8 @@ name: pangeo
 channels:
  - conda-forge
 dependencies:
- - python=3.8*
- - pangeo-notebook=2021.09.30
+ - python=3.9*
+ - pangeo-notebook=2022.01.18
  - pip=20
  - adlfs
  - awscli
@@ -20,18 +20,20 @@ dependencies:
  - datashader
  - descartes
  - earthengine-api
+ - earthdata
  - eofs
  - erddapy
  - esmpy
  - fastjmd95
  - fsspec
- - fsspec-reference-maker
+ - gcm_filters
  - gcsfs
  - gh
  - geocube
  - geopandas
  - geopy
  - geoviews-core
+ - git-lfs
  - gsw
  - h5netcdf
  - h5py
@@ -43,9 +45,12 @@ dependencies:
  - intake-stac
  - intake-xarray
  - ipyleaflet
+ - ipytree
  - ipywidgets
  - jupyter-panel-proxy
  - jupyter-resource-usage
+ - kerchunk
+ - lxml
  - lz4
  - matplotlib-base
  - metpy
@@ -69,6 +74,8 @@ dependencies:
  - pymc3
  - pygeos
  - pystac
+ - pystac-client
+ - pytables
  - python-blosc
  - python-gist
  - python-graphviz
@@ -77,9 +84,8 @@ dependencies:
  - rechunker
  - rio-cogeo
  - rioxarray
+ - rise
  - s3fs>0.5
- - sat-search
- - sat-stac
  - satpy
  - scikit-image
  - scikit-learn
@@ -89,23 +95,21 @@ dependencies:
  - skyfield
  - sparse
  - sympy
- - pytables
- - tiledb-py
- - utide
- - umap-learn
- - stackstac
+ # NOTE: waiting on https://github.com/gjoseph92/stackstac/issues/83
+ # - stackstac
  - tiledb-py
  - timezonefinder
+ - utide
+ - umap-learn
  - xarray
  - xarrayutils
  - xarray_leaflet
  - xarray-spatial
  - xcape
- - xcube
+ # - xcube>=0.9.1
  - xesmf
  - xgcm
  - xhistogram
- - xlayers
  - xmitgcm
  - xpublish
  - xrft

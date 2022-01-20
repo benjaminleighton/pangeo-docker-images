@@ -4,9 +4,10 @@ FROM ubuntu:20.04
 LABEL org.opencontainers.image.source=https://github.com/pangeo-data/pangeo-docker-images
 
 # Run this section as root
-# try to keep conda version in sync with repo2docker
-# ========================
-ENV CONDA_VERSION=4.10.3-2 \
+# try to keep conda version in sync with repo2docker?
+# https://github.com/jupyterhub/repo2docker/blob/297c7955d208f3595c4d5bc2b079953199bb1f35/repo2docker/buildpacks/conda/install-miniforge.bash#L8-L9# ========================
+ENV CONDA_VERSION=4.10.3-7 \
+    MAMBA_VERSION=0.17 \
     CONDA_ENV=notebook \
     NB_USER=jovyan \
     NB_UID=1000 \
@@ -17,8 +18,9 @@ ENV CONDA_VERSION=4.10.3-2 \
 
 ENV NB_PYTHON_PREFIX=${CONDA_DIR}/envs/${CONDA_ENV} \
     DASK_ROOT_CONFIG=${CONDA_DIR}/etc \
-    HOME=/home/${NB_USER} \
-    PATH=${CONDA_DIR}/bin:${PATH}
+    HOME=/home/${NB_USER}
+    
+ENV PATH=${NB_PYTHON_PREFIX}/bin:${CONDA_DIR}/bin:${PATH}
 
 # required for prefect agent: https://github.com/PrefectHQ/prefect/issues/3061
 ENV DEBIAN_FRONTEND=noninteractive
@@ -49,7 +51,7 @@ RUN echo "Installing Miniforge..." \
     && wget --quiet ${URL} -O miniconda.sh \
     && /bin/bash miniconda.sh -u -b -p ${CONDA_DIR} \
     && rm miniconda.sh \
-    && conda install -y -c conda-forge mamba \
+    && conda install -y -c conda-forge mamba=${MAMBA_VERSION} \
     && mamba clean -afy \
     && find ${CONDA_DIR} -follow -type f -name '*.a' -delete \
     && find ${CONDA_DIR} -follow -type f -name '*.pyc' -delete
@@ -111,7 +113,9 @@ ONBUILD RUN echo "Checking for 'conda-linux-64.lock' or 'environment.yml'..." \
         && find ${CONDA_DIR} -follow -type f -name '*.a' -delete \
         && find ${CONDA_DIR} -follow -type f -name '*.pyc' -delete \
         && find ${CONDA_DIR} -follow -type f -name '*.js.map' -delete \
-        && find ${NB_PYTHON_PREFIX}/lib/python*/site-packages/bokeh/server/static -follow -type f -name '*.js' ! -name '*.min.js' -delete
+        ; if [ -d ${NB_PYTHON_PREFIX}/lib/python*/site-packages/bokeh/server/static ]; then \
+        find ${NB_PYTHON_PREFIX}/lib/python*/site-packages/bokeh/server/static -follow -type f -name '*.js' ! -name '*.min.js' -delete \
+        ; fi
 
 # Install pip packages
 # remove cache https://github.com/pypa/pip/pull/6391 ?
@@ -127,8 +131,7 @@ ONBUILD RUN echo "Checking for 'postBuild'..." \
         ; [ -d binder ] && cd binder \
         ; [ -d .binder ] && cd .binder \
         ; if test -f "postBuild" ; then \
-        export PATH=${NB_PYTHON_PREFIX}/bin:${PATH} \
-        && chmod +x postBuild \
+        chmod +x postBuild \
         && ./postBuild \
         && rm -rf /tmp/* \
         && rm -rf ${HOME}/.cache ${HOME}/.npm ${HOME}/.yarn \
