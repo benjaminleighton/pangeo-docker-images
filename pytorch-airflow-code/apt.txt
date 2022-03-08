@@ -1,11 +1,7 @@
 git
 vim
 graphviz
-gfortran
-g++
 tree
-gcc
-gdb
 rsync
 rclone
 curl

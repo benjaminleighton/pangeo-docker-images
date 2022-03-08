@@ -8,10 +8,12 @@ channels:
  - nvidia
  - iopath
 dependencies:
- - python=3.8*
- - pangeo-notebook=2021.09.30
+ - python=3.9*
+ - pangeo-notebook=2022.01.18
  - pip=20
  - adlfs
+ - aesara=2.3.2
+ - arviz>=0.11.4
  - awscli
  - astropy
  - bottleneck
@@ -27,11 +29,13 @@ dependencies:
  - datashader
  - descartes
  - earthengine-api
+ - earthdata
  - eofs
  - erddapy
  - esmpy
  - fastjmd95
  - fsspec
+ - gcm_filters
  - kerchunk
  - flake8
  - gcsfs
@@ -40,6 +44,7 @@ dependencies:
  - geopandas
  - geopy
  - geoviews-core
+ - git-lfs
  - gsw
  - h5netcdf
  - h5py
@@ -53,11 +58,14 @@ dependencies:
  - intake-xarray
  - iopath
  - ipyleaflet
+ - ipytree
  - ipywidgets
  - isort
  - jupyter-panel-proxy
  - jupyter-resource-usage
+ - lxml
  - lz4
+ - libgpuarray
  - matplotlib-base
  - metpy
  - mkl
@@ -78,12 +86,16 @@ dependencies:
  - prefect
  - pyarrow
  - pycamhd
+ - pycuda
  - pydap
  - pyhdf
  - pyinterp
  - pymc3
  - pygeos
+ - pygpu
  - pystac
+ - pystac-client
+ - pytables
  - python-blosc
  - python-gist
  - python-graphviz
@@ -98,6 +110,7 @@ dependencies:
  - rechunker
  - rio-cogeo
  - rioxarray
+ - rise
  - s3fs>0.5
  - sat-search
  - sat-stac
@@ -109,20 +122,19 @@ dependencies:
  - shapely
  - skyfield
  - sparse
- - stackstac 
+#  - stackstac 
  - sympy
  - pytables
- - theano-pymc
  - tiledb-py
  - timezonefinder
- - umap-learn
  - utide
+ - umap-learn
  - xarray
  - xarrayutils
  - xarray_leaflet
  - xarray-spatial
  - xcape
- - xcube
+#  - xcube
  - xesmf
  - xgcm
  - xhistogram
