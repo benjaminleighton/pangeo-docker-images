@@ -44,6 +44,7 @@ dependencies:
  - intake-stac
  - intake-xarray
  - ipyleaflet
+ - ipympl
  - ipywidgets
  - jupyter-panel-proxy
  - jupyter-resource-usage
