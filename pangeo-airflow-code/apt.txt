@@ -6,6 +6,7 @@ g++
 tree
 gcc
 gdb
+gnupg2
 rsync
 rclone
 curl
