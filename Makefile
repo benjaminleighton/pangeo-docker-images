@@ -39,8 +39,7 @@ pytorch-airflow-code : base-image
 	cd pytorch-airflow-code ; \
 	../update_lockfile.sh; \
 	../list_packages.sh | sort > packages.txt; \
-	docker build -t pangeo/pytorch-airflow-code:master . ; \
-	docker run -w $(TESTDIR) -v $(PWD):$(TESTDIR) pangeo/pytorch-airflow-code:master ./run_tests.sh pytorch-airflow-code
+	docker build -t pangeo/pytorch-airflow-code:master . 
 
 .PHONY: ml-notebook
 ml-notebook : base-image

@@ -1,18 +1,17 @@
 name: pangeo
 channels:
- - conda-forge
  - pytorch
  - pytorch3d
  - fvcore
  - bottler
- - nvidia
  - iopath
+ - conda-forge
 dependencies:
  - python=3.9*
  - pangeo-notebook=2022.01.18
  - pip=20
  - adlfs
- - aesara=2.3.2
+ - aesara>=2.3.2
  - arviz>=0.11.4
  - awscli
  - astropy
@@ -30,11 +29,13 @@ dependencies:
  - descartes
  - earthengine-api
  - earthdata
+ - einops
  - eofs
  - erddapy
  - esmpy
  - fastjmd95
  - fsspec
+ - fvcore
  - gcm_filters
  - kerchunk
  - flake8
@@ -56,7 +57,7 @@ dependencies:
  - intake-geopandas
  - intake-stac
  - intake-xarray
- - iopath
+ - iopath::iopath
  - ipyleaflet
  - ipytree
  - ipywidgets
@@ -77,6 +78,7 @@ dependencies:
  - numcodecs
  - numpy
  - opencv
+ - parse
  - pandas
  - panel
  - pillow
@@ -85,6 +87,7 @@ dependencies:
  - plotly
  - prefect
  - pyarrow
+ - pyfftw
  - pycamhd
  - pycuda
  - pydap
@@ -93,17 +96,20 @@ dependencies:
  - pymc3
  - pygeos
  - pygpu
+ - pysolar
  - pystac
  - pystac-client
  - pytables
  - python-blosc
  - python-gist
  - python-graphviz
- - pytorch
- - pytorch3d
- - torchvision
- - nvidia/label/cuda-11.4.2::cuda-toolkit
- - nvidiacub
+ - python-dateutil>=2.8.2
+ - pytorch::pytorch
+ - pytorch3d::pytorch3d
+ - pytorch::torchvision
+ - pytorch::torchaudio
+ - pytorch::cudatoolkit=11.3
+ - bottler::nvidiacub
  - pytz
  - pytmd
  - rasterio
@@ -112,8 +118,8 @@ dependencies:
  - rioxarray
  - rise
  - s3fs>0.5
- - sat-search
- - sat-stac
+# - sat-search
+# - sat-stac
  - satpy
  - scikit-image
  - scikit-learn
@@ -125,8 +131,10 @@ dependencies:
 #  - stackstac 
  - sympy
  - pytables
+ - tensorboard
  - tiledb-py
  - timezonefinder
+ - torchinfo
  - utide
  - umap-learn
  - xarray
