@@ -1,14 +1,14 @@
 name: pangeo
 channels:
  - conda-forge
+ - nodefaults
 dependencies:
- - python=3.9*
- - pangeo-notebook=2022.01.18
- - pip=20
  - adlfs
+ - argopy
  - awscli
  - astropy
  - bottleneck
+ - apache-beam
  - boto3
  - bottleneck
  - cartopy >= 0.20.0
@@ -30,6 +30,7 @@ dependencies:
  - gcsfs
  - gh
  - geocube
+ - geogif
  - geopandas
  - geopy
  - geoviews-core
@@ -58,15 +59,16 @@ dependencies:
  - nbstripout
  - nc-time-axis
  - netcdf4
- - nomkl
  - numcodecs
  - numpy
  - pandas
  - panel
  - pillow
+ - pangeo-forge-recipes
  - parcels
  - param!=1.11.0
- - prefect
+ - pop-tools
+ - prefect=0.15.13
  - pyarrow
  - pycamhd
  - pydap
@@ -84,7 +86,7 @@ dependencies:
  - rechunker
  - rio-cogeo
  - rioxarray
- - rise
+# - rise
  - s3fs>0.5
  - satpy
  - scikit-image
@@ -115,3 +117,5 @@ dependencies:
  - xrft
  - xskillscore
  - zarr
+ - gh-scoped-creds
+ - jupyterlab-git
