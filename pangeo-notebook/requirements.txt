@@ -2,3 +2,4 @@ rechunker
 wavespectra
 git+https://github.com/pbranson/dembuilder.git
 windrose
+jupyterlab-s3-browser>=0.12

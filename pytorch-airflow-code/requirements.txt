@@ -5,3 +5,4 @@ git+https://github.com/dirkcgrunwald/jupyter_codeserver_proxy-.git
 git+https://github.com/NickMortimer/pyram
 jax[cuda] -f https://storage.googleapis.com/jax-releases/jax_releases.html
 ray[tune]
+signatory
